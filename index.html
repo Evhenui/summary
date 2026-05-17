@@ -24,9 +24,10 @@
 <div class="grain"></div>
 
 <header>
-  <a href="#about" class="hide-mobile" data-i18n="nav.about">About</a>
-  <a href="#experience" class="hide-mobile" data-i18n="nav.experience">Experience</a>
-  <a href="#skills" class="hide-mobile" data-i18n="nav.skills">Skills</a>
+  <a href="#about" data-i18n="nav.about">About</a>
+  <a href="#experience" data-i18n="nav.experience">Experience</a>
+  <a href="#projects" data-i18n="nav.projects">Projects</a>
+  <a href="#skills" data-i18n="nav.skills">Skills</a>
 
   <div class="nav-divider"></div>
 
@@ -65,13 +66,12 @@
           <h1 class="reveal">
             <span data-i18n="hero.name">Yevhen</span> <span data-i18n="hero.surname">Vitchenko</span><br>
             <span class="italic" data-i18n="hero.role">Front-end Developer</span>
-          </h1> 
+          </h1>
           <p class="subtitle reveal" data-i18n="hero.subtitle">
-            Building fast, beautiful and reliable web interfaces.
-            4+ years with Vue, React, Next.js and modern JS/TS.
+            Crafting fast and reliable web interfaces — from marketing landings to product apps. 4+ years with Vue, React, Next.js, modern JS/TS and AI tooling.
           </p>
           <div class="hero-actions reveal">
-            <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Get in touch</a>
+            <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Hire me</a>
             <a href="#experience" class="btn btn-glass" data-i18n="hero.cta2">See experience</a>
           </div>
 
@@ -82,7 +82,7 @@
             </div>
             <div class="stat-card">
               <div class="stat-num">3</div>
-              <div class="stat-label" data-i18n="stats.projects">Active projects</div>
+              <div class="stat-label" data-i18n="stats.companies">Companies worked with</div>
             </div>
             <div class="stat-card">
               <div class="stat-num">15+</div>
@@ -106,11 +106,11 @@
           <div class="exp-header">
             <div>
               <h3 class="exp-title" data-i18n="exp1.role">Front-end Developer</h3>
-              <div class="exp-company">Star-up-group.com.ua · <span data-i18n="exp1.place">Remote</span></div>
+              <div class="exp-company">Star-up-group · <span data-i18n="exp1.place">Remote</span></div>
             </div>
             <div class="exp-meta">
               <div class="exp-period">06.2022 — <span data-i18n="now">present</span></div>
-              <div data-i18n="exp1.duration">4 years</div>
+              <div data-i18n="exp1.duration">~4 years</div>
             </div>
           </div>
           <p class="exp-desc" data-i18n="exp1.desc">Freelance projects at Star-up-group: maintenance and new development — corporate sites and e-commerce. Work with complex interfaces, GLTF 3D models, animations via Lottie, Anime.js, Three.js. Fast onboarding to new projects, refactoring legacy code.</p>
@@ -138,10 +138,10 @@
             </div>
             <div class="exp-meta">
               <div class="exp-period">04.2022 — <span data-i18n="now">present</span></div>
-              <div data-i18n="exp2.duration">4 years 2 months</div>
+              <div data-i18n="exp2.duration">4 years 1 month</div>
             </div>
           </div>
-          <p class="exp-desc" data-i18n="exp2.desc">Marketing landing pages (academyocean.com) and new features for the main product (app.academyocean.com). Full cycle from requirements to release. Legacy refactoring, code reviews, clean code.</p>
+          <p class="exp-desc" data-i18n="exp2.desc">Marketing landing pages (academyocean.com) and new features for the main product (app.academyocean.com). Full cycle from requirements to release. Legacy refactoring, code reviews, clean code. Use AI tooling (Copilot, Cursor, Claude) in daily workflow to speed up routine tasks and reviews.</p>
           <div class="tech-tags">
             <span class="tag">Vue 2</span>
             <span class="tag">JavaScript ES6+</span>
@@ -197,10 +197,57 @@
     </div>
   </section>
 
+  <section id="projects">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-num" data-i18n="sec.projects.num">02 / PROJECTS</span>
+        <h2><span data-i18n="sec.projects.title1">Selected</span> <span class="italic" data-i18n="sec.projects.title2">work</span></h2>
+      </div>
+
+      <div class="glass projects-list reveal">
+        <a class="project-row" href="https://academyocean.com" target="_blank" rel="noopener">
+          <div class="project-main">
+            <div class="project-name">academyocean.com</div>
+            <div class="project-desc" data-i18n="proj1.desc">LMS platform — marketing site & product app</div>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Vue 2</span>
+            <span class="tag alt">Laravel</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-row" href="https://udu.in.ua" target="_blank" rel="noopener">
+          <div class="project-main">
+            <div class="project-name">udu.in.ua</div>
+            <div class="project-desc" data-i18n="proj2.desc">Ongoing solo project — support, new features, UI</div>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Vue.js</span>
+            <span class="tag alt">REST API</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-row" href="https://logicpower.ua" target="_blank" rel="noopener">
+          <div class="project-main">
+            <div class="project-name">logicpower.ua</div>
+            <div class="project-desc" data-i18n="proj3.desc">Corporate site rebrand, landing constructor & calculators</div>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Vue.js</span>
+            <span class="tag alt2">SCSS</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section id="skills">
     <div class="container">
       <div class="section-title reveal">
-        <span class="section-num" data-i18n="sec2.num">02 / SKILLS</span>
+        <span class="section-num" data-i18n="sec2.num">03 / SKILLS</span>
         <h2><span data-i18n="sec2.title1">Tech</span> <span class="italic" data-i18n="sec2.title2">stack</span></h2>
       </div>
 
@@ -224,6 +271,17 @@
             <li>HTML5</li>
             <li>CSS3 / SCSS</li>
             <li>PHP (basic)</li>
+          </ul>
+        </div>
+
+        <div class="glass skill-card reveal">
+          <h3><span class="icon">🤖</span>AI / Productivity</h3>
+          <ul class="skill-list">
+            <li>Claude</li>
+            <li>ChatGPT</li>
+            <li>GitHub Copilot</li>
+            <li>Cursor</li>
+            <li data-i18n="skill.prompt">Prompt engineering</li>
           </ul>
         </div>
 
@@ -276,7 +334,7 @@
   <section id="education">
     <div class="container">
       <div class="section-title reveal">
-        <span class="section-num" data-i18n="sec3.num">03 / EDUCATION</span>
+        <span class="section-num" data-i18n="sec3.num">04 / EDUCATION</span>
         <h2><span data-i18n="sec3.title1">Education &amp;</span> <span class="italic" data-i18n="sec3.title2">certificates</span></h2>
       </div>
 
@@ -310,7 +368,7 @@
     <div class="container">
       <div class="glass contact-card reveal">
         <h2><span data-i18n="contact.title1">Ready for</span> <span class="italic" data-i18n="contact.title2">new challenges</span></h2>
-        <p data-i18n="contact.desc">Looking for a team where I can grow as an engineer. Open to full-time and part-time roles.</p>
+        <p data-i18n="contact.desc">Looking for a product team where I can ship real features, not just code them. Open to full-time and part-time roles.</p>
 
         <div class="contact-grid">
           <a href="tel:+380669989194" class="contact-item">
@@ -337,11 +395,15 @@
             </div>
           </a>
 
-          <a href="https://instagram.com/" class="contact-item" target="_blank" rel="noopener">
-            <div class="icon-box">📷</div>
+          <a href="https://github.com/Evhenui" class="contact-item" target="_blank" rel="noopener">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </div>
             <div>
-              <div class="label">Instagram</div>
-              <div class="value">@profile</div>
+              <div class="label">GitHub</div>
+              <div class="value">@Evhenui</div>
             </div>
           </a>
         </div>
