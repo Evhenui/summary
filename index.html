@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Євген Вітченко — Front-end розробник. Резюме, досвід, проєкти.">
-<title>Євген Вітченко · Front-end Developer</title>
+<meta name="description" content="Yevhen Vitchenko — Front-end Developer. Resume, experience, projects.">
+<title>Yevhen Vitchenko · Front-end Developer</title>
+
+<!-- Favicon as inline SVG with gradient EV initials -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff6b9d'/%3E%3Cstop offset='100%25' stop-color='%23c06cfd'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='50%25' y='52%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='32' font-style='italic' font-weight='700' fill='white'%3EEV%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ====== ROOT ====== */
+  /* ====== ROOT (DARK THEME — default) ====== */
   :root {
     --bg-0: #0a0a1a;
     --bg-1: #12122a;
@@ -19,14 +23,56 @@
     --glass-bg: rgba(255, 255, 255, 0.06);
     --glass-border: rgba(255, 255, 255, 0.12);
     --glass-bg-strong: rgba(255, 255, 255, 0.09);
+    --nav-bg: rgba(10, 10, 26, 0.5);
     --accent-1: #ff6b9d;
     --accent-2: #c06cfd;
     --accent-3: #4dd0ff;
     --accent-4: #ffd166;
+    --tag-purple-bg: rgba(192, 108, 253, 0.12);
+    --tag-purple-border: rgba(192, 108, 253, 0.25);
+    --tag-purple-text: #e0c0ff;
+    --tag-blue-bg: rgba(77, 208, 255, 0.12);
+    --tag-blue-border: rgba(77, 208, 255, 0.25);
+    --tag-blue-text: #b0e8ff;
+    --tag-pink-bg: rgba(255, 107, 157, 0.12);
+    --tag-pink-border: rgba(255, 107, 157, 0.25);
+    --tag-pink-text: #ffb8d4;
+    --skill-bg: rgba(255, 255, 255, 0.06);
+    --orb-opacity-1: 0.4;
+    --orb-opacity-2: 0.3;
+    --orb-opacity-3: 0.3;
+    --grain-opacity: 0.08;
     --shadow-glow: 0 0 60px -10px rgba(192, 108, 253, 0.4);
     --display: 'Fraunces', Georgia, serif;
     --body: 'Manrope', -apple-system, sans-serif;
     --mono: 'JetBrains Mono', monospace;
+  }
+
+  /* ====== LIGHT THEME ====== */
+  [data-theme="light"] {
+    --bg-0: #f5f0ff;
+    --bg-1: #ece4ff;
+    --ink: #1a1530;
+    --ink-soft: rgba(26, 21, 48, 0.72);
+    --ink-muted: rgba(26, 21, 48, 0.5);
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.7);
+    --glass-bg-strong: rgba(255, 255, 255, 0.75);
+    --nav-bg: rgba(255, 255, 255, 0.6);
+    --tag-purple-bg: rgba(192, 108, 253, 0.15);
+    --tag-purple-border: rgba(192, 108, 253, 0.35);
+    --tag-purple-text: #6a2bb8;
+    --tag-blue-bg: rgba(77, 160, 255, 0.15);
+    --tag-blue-border: rgba(77, 160, 255, 0.35);
+    --tag-blue-text: #1a5fb4;
+    --tag-pink-bg: rgba(255, 107, 157, 0.15);
+    --tag-pink-border: rgba(255, 107, 157, 0.35);
+    --tag-pink-text: #b8246d;
+    --skill-bg: rgba(255, 255, 255, 0.55);
+    --orb-opacity-1: 0.5;
+    --orb-opacity-2: 0.4;
+    --orb-opacity-3: 0.4;
+    --grain-opacity: 0.05;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,9 +85,9 @@
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
+    transition: background 0.5s ease, color 0.3s ease;
   }
 
-  /* ====== ATMOSPHERIC BACKGROUND ====== */
   .bg-canvas {
     position: fixed;
     inset: 0;
@@ -51,6 +97,7 @@
       radial-gradient(ellipse 70% 50% at 85% 30%, rgba(255, 107, 157, 0.3), transparent 60%),
       radial-gradient(ellipse 60% 80% at 50% 90%, rgba(77, 208, 255, 0.25), transparent 60%),
       linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+    transition: opacity 0.5s ease;
   }
 
   .grain {
@@ -58,7 +105,7 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.08;
+    opacity: var(--grain-opacity);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     mix-blend-mode: overlay;
   }
@@ -70,10 +117,11 @@
     z-index: -1;
     pointer-events: none;
     animation: float 20s ease-in-out infinite;
+    transition: opacity 0.5s ease;
   }
-  .orb-1 { width: 500px; height: 500px; top: -100px; left: -100px; background: var(--accent-2); opacity: 0.4; }
-  .orb-2 { width: 400px; height: 400px; top: 40%; right: -100px; background: var(--accent-1); opacity: 0.3; animation-delay: -7s; }
-  .orb-3 { width: 350px; height: 350px; bottom: -100px; left: 30%; background: var(--accent-3); opacity: 0.3; animation-delay: -14s; }
+  .orb-1 { width: 500px; height: 500px; top: -100px; left: -100px; background: var(--accent-2); opacity: var(--orb-opacity-1); }
+  .orb-2 { width: 400px; height: 400px; top: 40%; right: -100px; background: var(--accent-1); opacity: var(--orb-opacity-2); animation-delay: -7s; }
+  .orb-3 { width: 350px; height: 350px; bottom: -100px; left: 30%; background: var(--accent-3); opacity: var(--orb-opacity-3); animation-delay: -14s; }
 
   @keyframes float {
     0%, 100% { transform: translate(0, 0) scale(1); }
@@ -81,7 +129,6 @@
     66% { transform: translate(-30px, 40px) scale(0.95); }
   }
 
-  /* ====== LAYOUT ====== */
   .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -95,25 +142,18 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
-    background: rgba(10, 10, 26, 0.5);
+    background: var(--nav-bg);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid var(--glass-border);
     border-radius: 100px;
-    padding: 8px 8px 8px 24px;
+    padding: 8px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     font-size: 14px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-  nav .logo {
-    font-family: var(--display);
-    font-weight: 600;
-    font-style: italic;
-    font-size: 16px;
-    color: var(--ink);
-    margin-right: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, border-color 0.3s ease;
   }
   nav a {
     color: var(--ink-soft);
@@ -122,14 +162,46 @@
     border-radius: 100px;
     transition: all 0.3s ease;
     font-weight: 500;
+    cursor: pointer;
   }
-  nav a:hover { color: var(--ink); background: var(--glass-bg); }
+  nav a:hover { color: var(--ink); background: var(--glass-bg-strong); }
   nav .cta {
     background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     color: white;
     padding: 8px 18px;
+    margin-left: 4px;
   }
-  nav .cta:hover { transform: translateY(-1px); box-shadow: var(--shadow-glow); }
+  nav .cta:hover { transform: translateY(-1px); box-shadow: var(--shadow-glow); color: white; }
+
+  .nav-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--glass-border);
+    margin: 0 4px;
+  }
+  .nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .nav-btn:hover { color: var(--ink); background: var(--glass-bg-strong); }
+  .nav-btn svg { width: 16px; height: 16px; }
+  .theme-btn .sun { display: none; }
+  .theme-btn .moon { display: block; }
+  [data-theme="light"] .theme-btn .sun { display: block; }
+  [data-theme="light"] .theme-btn .moon { display: none; }
 
   /* ====== HERO ====== */
   .hero {
@@ -139,7 +211,74 @@
     padding: 120px 0 80px;
     position: relative;
   }
-  .hero-inner { display: grid; grid-template-columns: 1fr; gap: 40px; }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-text { display: flex; flex-direction: column; gap: 24px; }
+
+  /* Avatar */
+  .avatar-wrap {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    flex-shrink: 0;
+  }
+  .avatar-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4), var(--accent-1));
+    animation: spin 8s linear infinite;
+    filter: blur(2px);
+    opacity: 0.9;
+  }
+  .avatar-ring::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: var(--bg-0);
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .avatar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+    z-index: 1;
+    box-shadow: 0 20px 60px -20px rgba(192, 108, 253, 0.5);
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .avatar-fallback {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 84px;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color: white;
+  }
+  .avatar img.broken { display: none; }
+  .avatar img.broken + .avatar-fallback { display: flex; }
+
   .badge {
     display: inline-flex;
     align-items: center;
@@ -168,7 +307,7 @@
 
   h1 {
     font-family: var(--display);
-    font-size: clamp(48px, 9vw, 120px);
+    font-size: clamp(40px, 7vw, 96px);
     font-weight: 400;
     line-height: 0.95;
     letter-spacing: -0.04em;
@@ -183,7 +322,7 @@
     -webkit-text-fill-color: transparent;
   }
   .subtitle {
-    font-size: clamp(18px, 2vw, 22px);
+    font-size: clamp(17px, 1.6vw, 20px);
     color: var(--ink-soft);
     max-width: 600px;
     font-weight: 300;
@@ -217,12 +356,11 @@
   }
   .btn-glass:hover { background: var(--glass-bg-strong); transform: translateY(-2px); }
 
-  /* ====== QUICK STATS ====== */
   .stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
-    margin-top: 24px;
+    margin-top: 16px;
   }
   .stat-card {
     background: var(--glass-bg);
@@ -236,11 +374,10 @@
   .stat-card:hover {
     transform: translateY(-4px);
     background: var(--glass-bg-strong);
-    border-color: rgba(255, 255, 255, 0.2);
   }
   .stat-num {
     font-family: var(--display);
-    font-size: 42px;
+    font-size: 38px;
     font-weight: 600;
     line-height: 1;
     background: linear-gradient(135deg, var(--accent-3), var(--accent-2));
@@ -250,14 +387,13 @@
   }
   .stat-label {
     margin-top: 6px;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--ink-muted);
     font-family: var(--mono);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
-  /* ====== SECTIONS ====== */
   section { padding: 80px 0; position: relative; }
   .section-title {
     display: flex;
@@ -284,7 +420,6 @@
     letter-spacing: 0.1em;
   }
 
-  /* ====== GLASS CARDS ====== */
   .glass {
     background: var(--glass-bg);
     backdrop-filter: blur(30px) saturate(180%);
@@ -305,11 +440,9 @@
   }
   .glass:hover {
     background: var(--glass-bg-strong);
-    border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-4px);
   }
 
-  /* ====== EXPERIENCE ====== */
   .timeline { display: grid; gap: 24px; }
   .exp-card { position: relative; }
   .exp-header {
@@ -332,6 +465,7 @@
     font-weight: 500;
     font-size: 16px;
   }
+  [data-theme="light"] .exp-company { color: #2b8fc7; }
   .exp-meta {
     font-family: var(--mono);
     font-size: 12px;
@@ -343,7 +477,7 @@
   .exp-period {
     display: inline-block;
     padding: 4px 12px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: 100px;
     margin-bottom: 4px;
@@ -358,25 +492,24 @@
     font-family: var(--mono);
     font-size: 11px;
     padding: 5px 12px;
-    background: rgba(192, 108, 253, 0.12);
-    border: 1px solid rgba(192, 108, 253, 0.25);
-    color: #e0c0ff;
+    background: var(--tag-purple-bg);
+    border: 1px solid var(--tag-purple-border);
+    color: var(--tag-purple-text);
     border-radius: 100px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
   .tag.alt {
-    background: rgba(77, 208, 255, 0.12);
-    border-color: rgba(77, 208, 255, 0.25);
-    color: #b0e8ff;
+    background: var(--tag-blue-bg);
+    border-color: var(--tag-blue-border);
+    color: var(--tag-blue-text);
   }
   .tag.alt2 {
-    background: rgba(255, 107, 157, 0.12);
-    border-color: rgba(255, 107, 157, 0.25);
-    color: #ffb8d4;
+    background: var(--tag-pink-bg);
+    border-color: var(--tag-pink-border);
+    color: var(--tag-pink-text);
   }
 
-  /* ====== SKILLS ====== */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -410,19 +543,18 @@
     font-family: var(--mono);
     font-size: 12px;
     padding: 6px 12px;
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--skill-bg);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
     color: var(--ink-soft);
     transition: all 0.2s;
   }
   .skill-list li:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--glass-bg-strong);
     color: var(--ink);
     transform: translateY(-1px);
   }
 
-  /* ====== EDUCATION ====== */
   .edu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -453,9 +585,9 @@
     border-bottom: 1px solid rgba(77, 208, 255, 0.3);
     transition: all 0.2s;
   }
+  [data-theme="light"] .edu-link { color: #2b8fc7; }
   .edu-link:hover { color: var(--accent-1); border-color: var(--accent-1); }
 
-  /* ====== CONTACT ====== */
   .contact-section { padding: 80px 0 120px; }
   .contact-card {
     text-align: center;
@@ -494,7 +626,7 @@
     align-items: center;
     gap: 12px;
     padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     color: var(--ink);
@@ -503,9 +635,8 @@
     text-align: left;
   }
   .contact-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--glass-bg-strong);
     transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.25);
   }
   .contact-item .icon-box {
     width: 40px; height: 40px;
@@ -529,7 +660,6 @@
     font-weight: 500;
   }
 
-  /* ====== FOOTER ====== */
   footer {
     padding: 32px 0;
     text-align: center;
@@ -539,7 +669,6 @@
     border-top: 1px solid var(--glass-border);
   }
 
-  /* ====== SCROLL ANIMATIONS ====== */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -547,12 +676,18 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ====== RESPONSIVE ====== */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+    .hero-text { align-items: center; }
+    .avatar-wrap { width: 180px; height: 180px; margin: 0 auto; }
+    .badge, .hero-actions { margin: 0 auto; }
+    .subtitle { margin: 0 auto; }
+  }
   @media (max-width: 768px) {
-    nav { padding: 6px 6px 6px 16px; gap: 4px; font-size: 12px; }
-    nav .logo { font-size: 14px; margin-right: 8px; }
+    nav { padding: 6px; gap: 2px; font-size: 12px; }
     nav a { padding: 6px 10px; }
     nav .hide-mobile { display: none; }
+    .nav-btn { width: 32px; height: 32px; padding: 6px; }
     .container { padding: 0 16px; }
     .glass { padding: 24px; border-radius: 20px; }
     .exp-header { flex-direction: column; }
@@ -561,7 +696,6 @@
     .hero { padding: 100px 0 60px; }
   }
 
-  /* ====== SELECTION ====== */
   ::selection { background: var(--accent-2); color: white; }
   ::-webkit-scrollbar { width: 8px; }
   ::-webkit-scrollbar-track { background: var(--bg-0); }
@@ -577,46 +711,72 @@
 <div class="grain"></div>
 
 <nav>
-  <span class="logo">EV.</span>
-  <a href="#about" class="hide-mobile">Про мене</a>
-  <a href="#experience" class="hide-mobile">Досвід</a>
-  <a href="#skills" class="hide-mobile">Скіли</a>
-  <a href="#contact" class="cta">Контакти →</a>
+  <a href="#about" class="hide-mobile" data-i18n="nav.about">About</a>
+  <a href="#experience" class="hide-mobile" data-i18n="nav.experience">Experience</a>
+  <a href="#skills" class="hide-mobile" data-i18n="nav.skills">Skills</a>
+
+  <div class="nav-divider"></div>
+
+  <button class="nav-btn theme-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </svg>
+  </button>
+
+  <button class="nav-btn lang-btn" id="langToggle" aria-label="Toggle language" title="Toggle language">
+    <span id="langLabel">UA</span>
+  </button>
+
+  <a href="#contact" class="cta" data-i18n="nav.contact">Contact →</a>
 </nav>
 
 <header class="hero">
   <div class="container">
     <div class="hero-inner">
-      <span class="badge reveal"><span class="dot"></span>Відкритий до пропозицій · Одеса</span>
-      <h1 class="reveal">
-        Євген <span class="italic">Вітченко</span><br>
-        Front-end розробник
-      </h1>
-      <p class="subtitle reveal">
-        Створюю швидкі, красиві та надійні веб-інтерфейси.
-        4+ роки досвіду з Vue, React, Next.js та сучасним JavaScript.
-      </p>
-      <div class="hero-actions reveal">
-        <a href="#contact" class="btn btn-primary">Звʼязатися →</a>
-        <a href="#experience" class="btn btn-glass">Подивитись досвід</a>
+      <div class="avatar-wrap reveal">
+        <div class="avatar-ring"></div>
+        <div class="avatar">
+          <img src="img/photo.jpg" alt="Yevhen Vitchenko" onerror="this.classList.add('broken')">
+          <div class="avatar-fallback">EV</div>
+        </div>
       </div>
 
-      <div class="stats reveal" id="about">
-        <div class="stat-card">
-          <div class="stat-num">4+</div>
-          <div class="stat-label">Роки в IT</div>
+      <div class="hero-text">
+        <span class="badge reveal"><span class="dot"></span><span data-i18n="hero.badge">Open to work · Odesa</span></span>
+        <h1 class="reveal">
+          <span data-i18n="hero.name">Yevhen</span> <span class="italic" data-i18n="hero.surname">Vitchenko</span><br>
+          <span data-i18n="hero.role">Front-end Developer</span>
+        </h1>
+        <p class="subtitle reveal" data-i18n="hero.subtitle">
+          Building fast, beautiful and reliable web interfaces.
+          4+ years with Vue, React, Next.js and modern JavaScript.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Get in touch →</a>
+          <a href="#experience" class="btn btn-glass" data-i18n="hero.cta2">See experience</a>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">3</div>
-          <div class="stat-label">Активні проєкти</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">15+</div>
-          <div class="stat-label">Технологій у стеку</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">40K</div>
-          <div class="stat-label">Очікувана ЗП, грн</div>
+
+        <div class="stats reveal" id="about">
+          <div class="stat-card">
+            <div class="stat-num">4+</div>
+            <div class="stat-label" data-i18n="stats.years">Years in IT</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">3</div>
+            <div class="stat-label" data-i18n="stats.projects">Active projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">15+</div>
+            <div class="stat-label" data-i18n="stats.tech">Technologies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">40K</div>
+            <div class="stat-label" data-i18n="stats.salary">Expected salary, UAH</div>
+          </div>
         </div>
       </div>
     </div>
@@ -626,27 +786,23 @@
 <section id="experience">
   <div class="container">
     <div class="section-title reveal">
-      <span class="section-num">01 / ДОСВІД</span>
-      <h2>Робочий <span class="italic">шлях</span></h2>
+      <span class="section-num" data-i18n="sec1.num">01 / EXPERIENCE</span>
+      <h2><span data-i18n="sec1.title1">Career</span> <span class="italic" data-i18n="sec1.title2">path</span></h2>
     </div>
 
     <div class="timeline">
       <article class="glass exp-card reveal">
         <div class="exp-header">
           <div>
-            <h3 class="exp-title">Front-end програміст</h3>
-            <div class="exp-company">Star-up-group.com.ua · Дистанційно</div>
+            <h3 class="exp-title" data-i18n="exp1.role">Front-end Developer</h3>
+            <div class="exp-company">Star-up-group.com.ua · <span data-i18n="exp1.place">Remote</span></div>
           </div>
           <div class="exp-meta">
-            <div class="exp-period">06.2022 — нині</div>
-            <div>4 роки</div>
+            <div class="exp-period">06.2022 — <span data-i18n="now">present</span></div>
+            <div data-i18n="exp1.duration">4 years</div>
           </div>
         </div>
-        <p class="exp-desc">
-          Фріланс-проєкти в рамках Star-up-group: підтримка існуючих рішень та розробка нових — корпоративні сайти та e-commerce.
-          Працюю зі складними інтерфейсами, інтегрую 3D-моделі (GLTF), реалізую анімації через Lottie, Anime.js, Three.js.
-          Маю досвід швидкого підключення до проєктів, розбору legacy-коду та його поступового покращення.
-        </p>
+        <p class="exp-desc" data-i18n="exp1.desc">Freelance projects at Star-up-group: maintenance and new development — corporate sites and e-commerce. Work with complex interfaces, GLTF 3D models, animations via Lottie, Anime.js, Three.js. Fast onboarding to new projects, refactoring legacy code.</p>
         <div class="tech-tags">
           <span class="tag">Vue 3</span>
           <span class="tag">React</span>
@@ -666,18 +822,15 @@
       <article class="glass exp-card reveal">
         <div class="exp-header">
           <div>
-            <h3 class="exp-title">Front-end програміст</h3>
-            <div class="exp-company">AcademyOcean · Одеса</div>
+            <h3 class="exp-title" data-i18n="exp2.role">Front-end Developer</h3>
+            <div class="exp-company">AcademyOcean · <span data-i18n="exp2.place">Odesa</span></div>
           </div>
           <div class="exp-meta">
-            <div class="exp-period">04.2022 — нині</div>
-            <div>4 роки 2 місяці</div>
+            <div class="exp-period">04.2022 — <span data-i18n="now">present</span></div>
+            <div data-i18n="exp2.duration">4 years 2 months</div>
           </div>
         </div>
-        <p class="exp-desc">
-          Розробляю маркетингові лендінги (academyocean.com) та новий функціонал основного продукту (app.academyocean.com).
-          Беру участь у повному циклі — від обговорення вимог до релізу. Рефакторинг legacy-коду, code review, чистий код.
-        </p>
+        <p class="exp-desc" data-i18n="exp2.desc">Marketing landing pages (academyocean.com) and new features for the main product (app.academyocean.com). Full cycle from requirements to release. Legacy refactoring, code reviews, clean code.</p>
         <div class="tech-tags">
           <span class="tag">Vue 2</span>
           <span class="tag">JavaScript ES6+</span>
@@ -693,47 +846,40 @@
       <article class="glass exp-card reveal">
         <div class="exp-header">
           <div>
-            <h3 class="exp-title">Front-end розробник</h3>
-            <div class="exp-company">LogicPower · Одеса</div>
+            <h3 class="exp-title" data-i18n="exp3.role">Front-end Developer</h3>
+            <div class="exp-company">LogicPower · <span data-i18n="exp3.place">Odesa</span></div>
           </div>
           <div class="exp-meta">
             <div class="exp-period">08.2022 — 11.2023</div>
-            <div>1 рік 4 місяці</div>
+            <div data-i18n="exp3.duration">1 year 4 months</div>
           </div>
         </div>
-        <p class="exp-desc">
-          Робота в команді над оновленням основного сайту після ребрендингу. Розробляв лендінг-конструктор та різні калькулятори.
-          Участь у редизайні, реалізації нового UI, оптимізації продуктивності.
-          Окремий проєкт — udu.in.ua: підтримка, розвиток функціоналу, вдосконалення інтерфейсу.
-        </p>
+        <p class="exp-desc" data-i18n="exp3.desc">Team work on the main site relaunch after rebranding. Built a landing constructor and various calculators. New UI implementation, performance optimization. Separate project — udu.in.ua: support, new features, UI improvements.</p>
         <div class="tech-tags">
           <span class="tag">Vue.js</span>
           <span class="tag alt">JavaScript</span>
           <span class="tag alt2">SCSS</span>
           <span class="tag">REST API</span>
-          <span class="tag alt">Адаптивна верстка</span>
+          <span class="tag alt" data-i18n="tag.responsive">Responsive</span>
         </div>
       </article>
 
       <article class="glass exp-card reveal">
         <div class="exp-header">
           <div>
-            <h3 class="exp-title">Менеджер дільниці</h3>
-            <div class="exp-company">McDonald's Ukraine · Одеса</div>
+            <h3 class="exp-title" data-i18n="exp4.role">Shift Manager</h3>
+            <div class="exp-company">McDonald's Ukraine · <span data-i18n="exp4.place">Odesa</span></div>
           </div>
           <div class="exp-meta">
             <div class="exp-period">05.2013 — 04.2022</div>
-            <div>9 років</div>
+            <div data-i18n="exp4.duration">9 years</div>
           </div>
         </div>
-        <p class="exp-desc">
-          Керування дільницею та зміною. Контроль якості продукту, обладнання та команди.
-          Школа лідерства, тайм-менеджменту та роботи в умовах постійного навантаження.
-        </p>
+        <p class="exp-desc" data-i18n="exp4.desc">Managing a station and a shift. Quality control of product, equipment and team. A school of leadership, time-management and working under constant load.</p>
         <div class="tech-tags">
-          <span class="tag alt2">Менеджмент</span>
-          <span class="tag alt">Лідерство</span>
-          <span class="tag">Контроль якості</span>
+          <span class="tag alt2" data-i18n="tag.mgmt">Management</span>
+          <span class="tag alt" data-i18n="tag.lead">Leadership</span>
+          <span class="tag" data-i18n="tag.quality">Quality control</span>
         </div>
       </article>
     </div>
@@ -743,8 +889,8 @@
 <section id="skills">
   <div class="container">
     <div class="section-title reveal">
-      <span class="section-num">02 / СКІЛИ</span>
-      <h2>Технічний <span class="italic">стек</span></h2>
+      <span class="section-num" data-i18n="sec2.num">02 / SKILLS</span>
+      <h2><span data-i18n="sec2.title1">Tech</span> <span class="italic" data-i18n="sec2.title2">stack</span></h2>
     </div>
 
     <div class="skills-grid">
@@ -771,7 +917,7 @@
       </div>
 
       <div class="glass skill-card reveal">
-        <h3><span class="icon">🔧</span>State & Tools</h3>
+        <h3><span class="icon">🔧</span>State &amp; Tools</h3>
         <ul class="skill-list">
           <li>Pinia</li>
           <li>Vuex</li>
@@ -782,7 +928,7 @@
       </div>
 
       <div class="glass skill-card reveal">
-        <h3><span class="icon">📦</span>Build & Backend</h3>
+        <h3><span class="icon">📦</span>Build &amp; Backend</h3>
         <ul class="skill-list">
           <li>Vite</li>
           <li>Webpack</li>
@@ -793,7 +939,7 @@
       </div>
 
       <div class="glass skill-card reveal">
-        <h3><span class="icon">✨</span>Animations & 3D</h3>
+        <h3><span class="icon">✨</span>Animations &amp; 3D</h3>
         <ul class="skill-list">
           <li>Lottie</li>
           <li>Anime.js</li>
@@ -805,8 +951,8 @@
       <div class="glass skill-card reveal">
         <h3><span class="icon">🎨</span>UI / UX</h3>
         <ul class="skill-list">
-          <li>Адаптивна верстка</li>
-          <li>Кросбраузерність</li>
+          <li data-i18n="skill.responsive">Responsive layout</li>
+          <li data-i18n="skill.cross">Cross-browser</li>
           <li>Performance</li>
           <li>Clean Code</li>
           <li>Code Review</li>
@@ -819,30 +965,30 @@
 <section id="education">
   <div class="container">
     <div class="section-title reveal">
-      <span class="section-num">03 / ОСВІТА</span>
-      <h2>Освіта та <span class="italic">сертифікати</span></h2>
+      <span class="section-num" data-i18n="sec3.num">03 / EDUCATION</span>
+      <h2><span data-i18n="sec3.title1">Education &amp;</span> <span class="italic" data-i18n="sec3.title2">certificates</span></h2>
     </div>
 
     <div class="edu-grid">
       <div class="glass edu-card reveal">
-        <div class="edu-meta">2012 — 2016 · ВИЩА</div>
-        <h3>Східноукраїнський національний університет ім. Даля</h3>
-        <p class="edu-desc">Комп'ютерна інженерія · Луганськ</p>
+        <div class="edu-meta">2012 — 2016 · <span data-i18n="edu.higher">HIGHER</span></div>
+        <h3 data-i18n="edu1.name">Volodymyr Dahl East Ukrainian National University</h3>
+        <p class="edu-desc" data-i18n="edu1.desc">Computer Engineering · Luhansk</p>
       </div>
 
       <div class="glass edu-card reveal">
-        <div class="edu-meta">2020 · 7 МІСЯЦІВ</div>
+        <div class="edu-meta">2020 · <span data-i18n="edu.months7">7 MONTHS</span></div>
         <h3>Hillel IT School — Front End Pro</h3>
         <p class="edu-desc">
-          <a class="edu-link" href="https://certificate.ithillel.ua/view/64455975/ru" target="_blank" rel="noopener">Сертифікат →</a>
+          <a class="edu-link" href="https://certificate.ithillel.ua/view/64455975/ru" target="_blank" rel="noopener" data-i18n="edu.cert">Certificate →</a>
         </p>
       </div>
 
       <div class="glass edu-card reveal">
-        <div class="edu-meta">2020 · 5 МІСЯЦІВ</div>
+        <div class="edu-meta">2020 · <span data-i18n="edu.months5">5 MONTHS</span></div>
         <h3>Hillel IT School — Front End Basic</h3>
         <p class="edu-desc">
-          <a class="edu-link" href="https://certificate.ithillel.ua/view/98281932/ru" target="_blank" rel="noopener">Сертифікат →</a>
+          <a class="edu-link" href="https://certificate.ithillel.ua/view/98281932/ru" target="_blank" rel="noopener" data-i18n="edu.cert">Certificate →</a>
         </p>
       </div>
     </div>
@@ -852,14 +998,14 @@
 <section class="contact-section" id="contact">
   <div class="container">
     <div class="glass contact-card reveal">
-      <h2>Готовий до <span class="italic">нових викликів</span></h2>
-      <p>Шукаю команду, де можу зростати як інженер. Відкритий до повної та неповної зайнятості.</p>
+      <h2><span data-i18n="contact.title1">Ready for</span> <span class="italic" data-i18n="contact.title2">new challenges</span></h2>
+      <p data-i18n="contact.desc">Looking for a team where I can grow as an engineer. Open to full-time and part-time roles.</p>
 
       <div class="contact-grid">
         <a href="tel:+380669989194" class="contact-item">
           <div class="icon-box">📞</div>
           <div>
-            <div class="label">Телефон</div>
+            <div class="label" data-i18n="contact.phone">Phone</div>
             <div class="value">066 998-91-94</div>
           </div>
         </a>
@@ -876,7 +1022,7 @@
           <div class="icon-box">💬</div>
           <div>
             <div class="label">Telegram</div>
-            <div class="value">Написати у Telegram</div>
+            <div class="value" data-i18n="contact.tg">Send a message</div>
           </div>
         </a>
 
@@ -894,17 +1040,180 @@
 
 <footer>
   <div class="container">
-    © 2026 · Євген Вітченко · Зроблено з ♥ у Одесі
+    © 2026 · Yevhen Vitchenko · <span data-i18n="footer.made">Made with ♥ in Odesa</span>
   </div>
 </footer>
 
 <script>
-  // Scroll reveal
+  /* ====== I18N ====== */
+  const i18n = {
+    en: {
+      'nav.about': 'About',
+      'nav.experience': 'Experience',
+      'nav.skills': 'Skills',
+      'nav.contact': 'Contact →',
+      'hero.badge': 'Open to work · Odesa',
+      'hero.name': 'Yevhen',
+      'hero.surname': 'Vitchenko',
+      'hero.role': 'Front-end Developer',
+      'hero.subtitle': 'Building fast, beautiful and reliable web interfaces. 4+ years with Vue, React, Next.js and modern JavaScript.',
+      'hero.cta1': 'Get in touch →',
+      'hero.cta2': 'See experience',
+      'stats.years': 'Years in IT',
+      'stats.projects': 'Active projects',
+      'stats.tech': 'Technologies',
+      'stats.salary': 'Expected salary, UAH',
+      'sec1.num': '01 / EXPERIENCE',
+      'sec1.title1': 'Career',
+      'sec1.title2': 'path',
+      'now': 'present',
+      'exp1.role': 'Front-end Developer',
+      'exp1.place': 'Remote',
+      'exp1.duration': '4 years',
+      'exp1.desc': "Freelance projects at Star-up-group: maintenance and new development — corporate sites and e-commerce. Work with complex interfaces, GLTF 3D models, animations via Lottie, Anime.js, Three.js. Fast onboarding to new projects, refactoring legacy code.",
+      'exp2.role': 'Front-end Developer',
+      'exp2.place': 'Odesa',
+      'exp2.duration': '4 years 2 months',
+      'exp2.desc': 'Marketing landing pages (academyocean.com) and new features for the main product (app.academyocean.com). Full cycle from requirements to release. Legacy refactoring, code reviews, clean code.',
+      'exp3.role': 'Front-end Developer',
+      'exp3.place': 'Odesa',
+      'exp3.duration': '1 year 4 months',
+      'exp3.desc': 'Team work on the main site relaunch after rebranding. Built a landing constructor and various calculators. New UI implementation, performance optimization. Separate project — udu.in.ua: support, new features, UI improvements.',
+      'exp4.role': 'Shift Manager',
+      'exp4.place': 'Odesa',
+      'exp4.duration': '9 years',
+      'exp4.desc': 'Managing a station and a shift. Quality control of product, equipment and team. A school of leadership, time-management and working under constant load.',
+      'tag.responsive': 'Responsive',
+      'tag.mgmt': 'Management',
+      'tag.lead': 'Leadership',
+      'tag.quality': 'Quality control',
+      'sec2.num': '02 / SKILLS',
+      'sec2.title1': 'Tech',
+      'sec2.title2': 'stack',
+      'skill.responsive': 'Responsive layout',
+      'skill.cross': 'Cross-browser',
+      'sec3.num': '03 / EDUCATION',
+      'sec3.title1': 'Education &',
+      'sec3.title2': 'certificates',
+      'edu.higher': 'HIGHER',
+      'edu.months7': '7 MONTHS',
+      'edu.months5': '5 MONTHS',
+      'edu.cert': 'Certificate →',
+      'edu1.name': 'Volodymyr Dahl East Ukrainian National University',
+      'edu1.desc': 'Computer Engineering · Luhansk',
+      'contact.title1': 'Ready for',
+      'contact.title2': 'new challenges',
+      'contact.desc': 'Looking for a team where I can grow as an engineer. Open to full-time and part-time roles.',
+      'contact.phone': 'Phone',
+      'contact.tg': 'Send a message',
+      'footer.made': 'Made with ♥ in Odesa'
+    },
+    ua: {
+      'nav.about': 'Про мене',
+      'nav.experience': 'Досвід',
+      'nav.skills': 'Скіли',
+      'nav.contact': 'Контакти →',
+      'hero.badge': 'Відкритий до пропозицій · Одеса',
+      'hero.name': 'Євген',
+      'hero.surname': 'Вітченко',
+      'hero.role': 'Front-end розробник',
+      'hero.subtitle': 'Створюю швидкі, красиві та надійні веб-інтерфейси. 4+ роки досвіду з Vue, React, Next.js та сучасним JavaScript.',
+      'hero.cta1': 'Звʼязатися →',
+      'hero.cta2': 'Подивитись досвід',
+      'stats.years': 'Роки в IT',
+      'stats.projects': 'Активні проєкти',
+      'stats.tech': 'Технологій у стеку',
+      'stats.salary': 'Очікувана ЗП, грн',
+      'sec1.num': '01 / ДОСВІД',
+      'sec1.title1': 'Робочий',
+      'sec1.title2': 'шлях',
+      'now': 'нині',
+      'exp1.role': 'Front-end програміст',
+      'exp1.place': 'Дистанційно',
+      'exp1.duration': '4 роки',
+      'exp1.desc': 'Фріланс-проєкти в рамках Star-up-group: підтримка існуючих рішень та розробка нових — корпоративні сайти та e-commerce. Працюю зі складними інтерфейсами, інтегрую 3D-моделі (GLTF), реалізую анімації через Lottie, Anime.js, Three.js. Маю досвід швидкого підключення до проєктів, розбору legacy-коду та його поступового покращення.',
+      'exp2.role': 'Front-end програміст',
+      'exp2.place': 'Одеса',
+      'exp2.duration': '4 роки 2 місяці',
+      'exp2.desc': 'Розробляю маркетингові лендінги (academyocean.com) та новий функціонал основного продукту (app.academyocean.com). Беру участь у повному циклі — від обговорення вимог до релізу. Рефакторинг legacy-коду, code review, чистий код.',
+      'exp3.role': 'Front-end розробник',
+      'exp3.place': 'Одеса',
+      'exp3.duration': '1 рік 4 місяці',
+      'exp3.desc': 'Робота в команді над оновленням основного сайту після ребрендингу. Розробляв лендінг-конструктор та різні калькулятори. Участь у редизайні, реалізації нового UI, оптимізації продуктивності. Окремий проєкт — udu.in.ua: підтримка, розвиток функціоналу, вдосконалення інтерфейсу.',
+      'exp4.role': 'Менеджер дільниці',
+      'exp4.place': 'Одеса',
+      'exp4.duration': '9 років',
+      'exp4.desc': 'Керування дільницею та зміною. Контроль якості продукту, обладнання та команди. Школа лідерства, тайм-менеджменту та роботи в умовах постійного навантаження.',
+      'tag.responsive': 'Адаптив',
+      'tag.mgmt': 'Менеджмент',
+      'tag.lead': 'Лідерство',
+      'tag.quality': 'Контроль якості',
+      'sec2.num': '02 / СКІЛИ',
+      'sec2.title1': 'Технічний',
+      'sec2.title2': 'стек',
+      'skill.responsive': 'Адаптивна верстка',
+      'skill.cross': 'Кросбраузерність',
+      'sec3.num': '03 / ОСВІТА',
+      'sec3.title1': 'Освіта та',
+      'sec3.title2': 'сертифікати',
+      'edu.higher': 'ВИЩА',
+      'edu.months7': '7 МІСЯЦІВ',
+      'edu.months5': '5 МІСЯЦІВ',
+      'edu.cert': 'Сертифікат →',
+      'edu1.name': 'Східноукраїнський національний університет ім. Даля',
+      'edu1.desc': "Комп'ютерна інженерія · Луганськ",
+      'contact.title1': 'Готовий до',
+      'contact.title2': 'нових викликів',
+      'contact.desc': 'Шукаю команду, де можу зростати як інженер. Відкритий до повної та неповної зайнятості.',
+      'contact.phone': 'Телефон',
+      'contact.tg': 'Написати у Telegram',
+      'footer.made': 'Зроблено з ♥ у Одесі'
+    }
+  };
+
+  const titles = {
+    en: 'Yevhen Vitchenko · Front-end Developer',
+    ua: 'Євген Вітченко · Front-end розробник'
+  };
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang === 'ua' ? 'uk' : 'en';
+    document.title = titles[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[lang][key]) el.textContent = i18n[lang][key];
+    });
+    document.getElementById('langLabel').textContent = lang === 'en' ? 'UA' : 'EN';
+    localStorage.setItem('lang', lang);
+  }
+
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    localStorage.setItem('theme', theme);
+  }
+
+  const savedLang = localStorage.getItem('lang') || 'en';
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  applyLang(savedLang);
+  applyTheme(savedTheme);
+
+  document.getElementById('langToggle').addEventListener('click', () => {
+    const current = localStorage.getItem('lang') || 'en';
+    applyLang(current === 'en' ? 'ua' : 'en');
+  });
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = localStorage.getItem('theme') || 'dark';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
@@ -913,7 +1222,6 @@
     observer.observe(el);
   });
 
-  // Smooth parallax for orbs
   document.addEventListener('mousemove', (e) => {
     const x = (e.clientX / window.innerWidth - 0.5) * 20;
     const y = (e.clientY / window.innerHeight - 0.5) * 20;
